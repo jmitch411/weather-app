@@ -17,6 +17,10 @@ ul {
     margin: 0 0 20px;
 }
 
+p {
+    text-align: center;
+}
+
 .weather-app {
     border: 1px solid #dadde1;
     padding: 15px;
