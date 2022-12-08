@@ -17,6 +17,32 @@ let day = days[now.getDay()];
 let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = `${day} ${hours}:${minutes}`;
 
+function displayForecast() {
+    let forecastElement = document.querySelector("#forecast");
+
+    let forecastHTML = `<div class="row">`;
+    let days = ["Thu", "Fri", "Sat", "Sun"];
+    days.forEach(function (day) {
+    forecastHTML = forecastHTML +
+    `
+    <div class="col-2">
+    <div class="weather-forecast-date">${day}</div>
+    <img src="http://openweathermap.org/img/wn/03n@2x.png" width="60" />
+    <div class="weather-forecast-temperatures">
+    <span class="weather-forecast-temperature-max">
+    18°
+    </span>
+    <span class="weather-forecast-temperature-min">
+    12°
+    </span>
+    </div>
+    </div>
+    `;
+    })
+    forecastHTML = forecastHTML + `</div>`;
+    forecastElement.innerHTML = forecastHTML;
+}
+
 function displayWeatherCondition(response) {
   celsiusTemperature = response.data.main.temp;
 
@@ -63,6 +89,8 @@ function showFahrenheitTemp(event) {
 
 let celsiusTemperature = null;
 
+
+
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemp);
 
@@ -93,3 +121,4 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
 searchCity("Miami");
+displayForecast();
